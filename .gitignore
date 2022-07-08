@@ -5,3 +5,4 @@ other
 *.iml
 log
 *.properties
+/.idea/

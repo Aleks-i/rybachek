@@ -10,7 +10,8 @@ public enum FishingWinterType {
     ZHERLITSY("Жерлицы"),
     SCOOPS("Черпаки/Багры"),
     FEEDERS("Кормушки"),
-    ICE_AXEC("Ледорубы");
+    ICE_AXEC("Ледорубы"),
+    HOOKS("Крючки зимние");
 
     private final String name;
 
