@@ -1,34 +1,34 @@
 package com.aleksi.model.product.clothes;
 
 import com.aleksi.model.AbstractProductEntity;
-import com.aleksi.model.product.TypesOfProducts;
 
-import java.util.Arrays;
-import java.util.Collection;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "clothes")
 public class Clothes extends AbstractProductEntity {
 
+    @Column(name = "size")
+    @NotBlank
     private String size;
+
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "clothes_type", joinColumns = @JoinColumn(name = "clothes_id"))
+    @Column(name = "clothes_type")
     private ClothesTypes clothesType;
 
     public Clothes() {
     }
 
     public Clothes(Clothes clothes) {
-        this(clothes.id, clothes.name, clothes.article, clothes.price, clothes.count, clothes.description, clothes.size,
-                clothes.clothesType, clothes.typesOfProducts);
+        this(clothes.id, clothes.name, clothes.price, clothes.count, clothes.description, clothes.size,
+                clothes.clothesType);
     }
 
-    public Clothes(Integer id, String name, int article, double price, int count, String description, String size,
-                   ClothesTypes clothesType, TypesOfProducts... typesOfProducts) {
-        this(id, name, article, price, count, description, size, clothesType, Arrays.asList(typesOfProducts));
-        this.size = size;
-        this.clothesType = clothesType;
-    }
-
-    public Clothes(Integer id, String name, int article, double price, int count, String description, String size,
-                   ClothesTypes clothesType, Collection<TypesOfProducts> typesOfProducts) {
-        super(id, name, article, price, count, description, typesOfProducts);
+    public Clothes(Integer id, String name, double price, int count, String description, String size,
+                   ClothesTypes clothesType) {
+        super(id, name, price, count, description);
         this.size = size;
         this.clothesType = clothesType;
     }

@@ -1,10 +1,6 @@
 package com.aleksi.model.product.fishing;
 
 import com.aleksi.model.AbstractProductEntity;
-import com.aleksi.model.product.TypesOfProducts;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 public class FishingWinter extends AbstractProductEntity {
 
@@ -14,18 +10,13 @@ public class FishingWinter extends AbstractProductEntity {
     }
 
     public FishingWinter(FishingWinter fishingWinter) {
-        this(fishingWinter.id, fishingWinter.name, fishingWinter.article, fishingWinter.price, fishingWinter.count,
-                fishingWinter.description, fishingWinter.typesOfFishingWinterPosition, fishingWinter.typesOfProducts);
+        this(fishingWinter.id, fishingWinter.name, fishingWinter.price, fishingWinter.count,
+                fishingWinter.description, fishingWinter.typesOfFishingWinterPosition);
     }
 
-    public FishingWinter(Integer id, String name, int article, Double price, int count, String description,
-                         FishingWinterType typesOfFishingWinterPosition, TypesOfProducts... typesOfProducts) {
-        this(id, name, article, price, count, description, typesOfFishingWinterPosition, Arrays.asList(typesOfProducts));
-    }
-
-    public FishingWinter(Integer id, String name, int article, Double price, int count, String description,
-                         FishingWinterType typesOfFishingWinterPosition, Collection<TypesOfProducts> typesOfProducts) {
-        super(id, name, article, price, count, description, typesOfProducts);
+    public FishingWinter(Integer id, String name, Double price, int count, String description,
+                         FishingWinterType typesOfFishingWinterPosition) {
+        super(id, name, price, count, description);
         this.typesOfFishingWinterPosition = typesOfFishingWinterPosition;
     }
 

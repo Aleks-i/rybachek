@@ -3,15 +3,13 @@ package com.aleksi.model;
 import com.aleksi.model.product.TypesOfProducts;
 import org.springframework.util.CollectionUtils;
 
+import javax.persistence.MappedSuperclass;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Set;
 
+@MappedSuperclass
 public abstract class AbstractProductEntity extends AbstractBaseEntity {
-
-    protected static final Integer TEMPORARY_ARTICLE = 0;
-
-    protected int article = TEMPORARY_ARTICLE;
 
     protected double price;
 
@@ -19,27 +17,14 @@ public abstract class AbstractProductEntity extends AbstractBaseEntity {
 
     protected String description;
 
-    protected Set<TypesOfProducts> typesOfProducts;
-
     public AbstractProductEntity() {
     }
 
-    public AbstractProductEntity(Integer id, String name, int article, double price, int count, String description,
-                                 Collection<TypesOfProducts> typesOfProducts) {
+    public AbstractProductEntity(Integer id, String name, double price, int count, String description) {
         super(id, name);
-        this.article = article;
         this.price = price;
         this.count = count;
         this.description = description;
-        setTypesOfProducts(typesOfProducts);
-    }
-
-    public int getArticle() {
-        return article;
-    }
-
-    public void setArticle(int article) {
-        this.article = article;
     }
 
     public double getPrice() {
@@ -58,22 +43,19 @@ public abstract class AbstractProductEntity extends AbstractBaseEntity {
         this.count = count;
     }
 
-    public Set<TypesOfProducts> getTypesOfProducts() {
-        return typesOfProducts;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTypesOfProducts(Collection<TypesOfProducts> typesOfProducts) {
-        this.typesOfProducts = CollectionUtils.isEmpty(typesOfProducts) ? EnumSet.noneOf(TypesOfProducts.class)
-                : EnumSet.copyOf(typesOfProducts);
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                ", article=" + article +
                 ", price=" + price +
                 ", count=" + count +
-                ", description='" + description + '\'' +
-                ", typesOfProducts=" + typesOfProducts;
+                ", description='" + description + '\'';
     }
 }

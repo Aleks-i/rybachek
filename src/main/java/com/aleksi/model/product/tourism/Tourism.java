@@ -3,9 +3,6 @@ package com.aleksi.model.product.tourism;
 import com.aleksi.model.AbstractProductEntity;
 import com.aleksi.model.product.TypesOfProducts;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 public class Tourism extends AbstractProductEntity {
 
     private TourismType typesOfTourismPosition;
@@ -14,18 +11,18 @@ public class Tourism extends AbstractProductEntity {
     }
 
     public Tourism(Tourism tourism) {
-        this(tourism.id, tourism.name, tourism.article, tourism.price, tourism.count, tourism.description,
-                tourism.typesOfTourismPosition, tourism.typesOfProducts);
+        this(tourism.id, tourism.name, tourism.price, tourism.count, tourism.description,
+                tourism.typesOfTourismPosition);
     }
 
-    public Tourism(Integer id, String name, int article, Double price, int count, String description,
+    public Tourism(Integer id, String name, Double price, int count, String description,
                    TourismType typesOfTourismPosition, TypesOfProducts... typesOfProducts) {
-        this(id, name, article, price, count, description, typesOfTourismPosition, Arrays.asList(typesOfProducts));
+        this(id, name, price, count, description, typesOfTourismPosition);
     }
 
-    public Tourism(Integer id, String name, int article, Double price, int count, String description,
-                   TourismType typesOfTourismPosition, Collection<TypesOfProducts> typesOfProducts) {
-        super(id, name, article, price, count, description, typesOfProducts);
+    public Tourism(Integer id, String name, Double price, int count, String description,
+                   TourismType typesOfTourismPosition) {
+        super(id, name, price, count, description);
         this.typesOfTourismPosition = typesOfTourismPosition;
     }
 

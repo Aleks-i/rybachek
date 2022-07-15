@@ -1,37 +1,42 @@
 package com.aleksi.model.product.boat;
 
 import com.aleksi.model.AbstractProductEntity;
-import com.aleksi.model.product.TypesOfProducts;
+import org.hibernate.validator.constraints.Range;
 
-import java.util.Arrays;
-import java.util.Collection;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "boats")
 public class Boat extends AbstractProductEntity {
 
+    @Column(name = "length")
+    @NotNull
     private double length;
 
+    @Column(name = "capacity")
+    @Range(min = 10, max = 2000)
     private int capacity;
 
-    private PassengersCount passengersCount;
+    @Column(name = "pass_count")
+    @Range(min = 1, max = 5)
+    private int passengersCount;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "boats_brand")
     private BoatBrand boatBrand;
 
     public Boat() {
     }
 
     public Boat(Boat boat) {
-        this(boat.id, boat.name, boat.article, boat.price, boat.count, boat.description, boat.length, boat.capacity,
-                boat.passengersCount, boat.boatBrand, boat.typesOfProducts);
+        this(boat.id, boat.name, boat.price, boat.count, boat.description, boat.length, boat.capacity,
+                boat.passengersCount, boat.boatBrand);
     }
 
-    public Boat(Integer id, String name, int article, double price, int count, String description, double length, int capacity,
-                PassengersCount passengersCount, BoatBrand boatBrand, TypesOfProducts... typesOfProducts) {
-        this(id, name, article, price, count, description, length, capacity, passengersCount, boatBrand, Arrays.asList(typesOfProducts));
-    }
-
-    public Boat(Integer id, String name, int article, double price, int count, String description, double length, int capacity,
-                PassengersCount passengersCount, BoatBrand boatBrand, Collection<TypesOfProducts> typesOfProducts) {
-        super(id, name, article, price, count, description, typesOfProducts);
+    public Boat(Integer id, String name, double price, int count, String description, double length, int capacity,
+                int passengersCount, BoatBrand boatBrand) {
+        super(id, name, price, count, description);
         this.length = length;
         this.capacity = capacity;
         this.passengersCount = passengersCount;
@@ -50,7 +55,7 @@ public class Boat extends AbstractProductEntity {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(double length) {
         this.length = length;
     }
 
@@ -62,11 +67,11 @@ public class Boat extends AbstractProductEntity {
         this.capacity = capacity;
     }
 
-    public PassengersCount getPassengers() {
+    public int getPassengers() {
         return passengersCount;
     }
 
-    public void setPassengers(PassengersCount passengersCount) {
+    public void setPassengersCount(int passengersCount) {
         this.passengersCount = passengersCount;
     }
 
