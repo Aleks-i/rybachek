@@ -24,8 +24,7 @@ public class DataJpaClothesRepository implements ProductRepository<Clothes> {
     @Override
     @Transactional
     public Clothes save(Clothes clothes, int userId) {
-        if (!clothes.isNew() && get(clothes.id()) == null &&
-                crudUserRepository.checkRoleAdminOrModerator(userId)) {
+        if ((!clothes.isNew() && get(clothes.id()) == null) || !crudUserRepository.checkRoleAdminOrModerator(userId)) {
             return null;
         }
         return crudClothesRepository.save(clothes);

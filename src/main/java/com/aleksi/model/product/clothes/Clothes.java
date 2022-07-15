@@ -4,6 +4,7 @@ import com.aleksi.model.AbstractProductEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "clothes")
@@ -14,8 +15,8 @@ public class Clothes extends AbstractProductEntity {
     private String size;
 
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "clothes_type", joinColumns = @JoinColumn(name = "clothes_id"))
     @Column(name = "clothes_type")
+    @NotNull
     private ClothesTypes clothesType;
 
     public Clothes() {

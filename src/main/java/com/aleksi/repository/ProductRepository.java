@@ -1,8 +1,10 @@
 package com.aleksi.repository;
 
+import com.aleksi.model.AbstractProductEntity;
+
 import java.util.List;
 
-public interface ProductRepository<T> {
+public interface ProductRepository<T extends AbstractProductEntity> {
     // null if updated meal does not belong to userId
     T save(T etnity, int userId);
 

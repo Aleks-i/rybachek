@@ -1,6 +1,5 @@
 DELETE FROM user_roles;
 DELETE FROM boats;
-DELETE FROM clothes_type;
 DELETE FROM clothes;
 DELETE FROM fishing_winter_type;
 DELETE FROM fishing_winter;
@@ -33,19 +32,12 @@ VALUES ('АКВА ОПТИМА 260', 14000, 1, 'Лодка ПВХ надувна
        ('Лоцман Стандарт 240', 15400, 2, 'Надуваня лодка Лоцман серый', 240, 220, 2, 'LOCMAN'),
        ('Румб 280', 17300, 2, 'Надуваня лодка Румб серый/зеленый', 280, 220, 2, 'RUMB');
 
-INSERT INTO clothes (name, price, count, description, size)
-VALUES ('Костюм х/б', 2500, 4, 'Костюм зимний', '42-43'),
-       ('Валенки', 400, 5, 'Валеник зимние', '43'),
-       ('Варежки', 500, 4, 'Ватные варежки', 'X'),
-       ('Костюм нательный', 1500, 8, 'Нательное белье', 'XL'),
-       ('Комбинезон защитный', 1300, 6, 'Защитный дождевик цвет хаки', 'XL');
-
-INSERT INTO clothes_type (clothes_type, clothes_id)
-VALUES ('WINTER', 100012),
-       ('SHOES', 100013),
-       ('WINTER', 100014),
-       ('WINTER', 100015),
-       ('SUMMER', 100016);
+INSERT INTO clothes (name, price, count, description, size, clothes_type)
+VALUES ('Костюм х/б', 2500, 4, 'Костюм зимний', '42-43', 'WINTER'),
+       ('Валенки', 400, 5, 'Валеник зимние', '43', 'SHOES'),
+       ('Варежки', 500, 4, 'Ватные варежки', 'X', 'WINTER'),
+       ('Костюм нательный', 1500, 8, 'Нательное белье', 'XL', 'WINTER'),
+       ('Комбинезон защитный', 1300, 6, 'Защитный дождевик цвет хаки', 'XL', 'SUMMER');
 
 INSERT INTO fishing_summer (name, price, count, description)
 VALUES ('Крючки', 50, 15, 'Крючек на карпа'),
