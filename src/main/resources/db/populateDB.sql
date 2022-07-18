@@ -2,7 +2,6 @@ DELETE FROM user_roles;
 DELETE FROM boats;
 DELETE FROM clothes;
 DELETE FROM fishing_summer;
-DELETE FROM fishing_winter_type;
 DELETE FROM fishing_winter;
 DELETE FROM tourism_type;
 DELETE FROM tourism;
@@ -44,13 +43,9 @@ VALUES ('Крючки', 50, 15, 'Крючек на карпа', 'HOOKS'),
        ('Поплавки', 60, 10, 'Поплавки перьевые', 'FLOATS'),
        ('Грузила наборные', 80, 10, 'Грузила 10-15-20 гр.', 'SINKERS');
 
-INSERT INTO fishing_winter (name, price, count, description)
-VALUES ('Крючки зимние', 40, 8, 'Крючек зимний'),
-       ('Удилище зимнее', 300, 7, 'Зимняя удочка');
-
-INSERT INTO fishing_winter_type (type, fishing_winter_id)
-VALUES ('HOOKS', 100021),
-       ('FISHING_RODS', 100022);
+INSERT INTO fishing_winter (name, price, count, description, fishing_winter_type)
+VALUES ('Крючки зимние', 40, 8, 'Крючек зимний', 'HOOKS'),
+       ('Удилище зимнее', 300, 7, 'Зимняя удочка', 'FISHING_RODS');
 
 INSERT INTO tourism (name, price, count, description)
 VALUES ('Сумка', 560, 4, 'Сумка походная'),

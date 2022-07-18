@@ -2,8 +2,16 @@ package com.aleksi.model.product.fishing;
 
 import com.aleksi.model.product.AbstractProductEntity;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "fishing_winter")
 public class FishingWinter extends AbstractProductEntity {
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "fishing_winter_type")
+    @NotNull
     private FishingWinterType typesOfFishingWinterPosition;
 
     public FishingWinter() {
