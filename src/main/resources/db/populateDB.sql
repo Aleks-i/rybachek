@@ -1,10 +1,9 @@
 DELETE FROM user_roles;
 DELETE FROM boats;
 DELETE FROM clothes;
+DELETE FROM fishing_summer;
 DELETE FROM fishing_winter_type;
 DELETE FROM fishing_winter;
-DELETE FROM fishing_summer_type;
-DELETE FROM fishing_summer;
 DELETE FROM tourism_type;
 DELETE FROM tourism;
 DELETE FROM users;
@@ -39,17 +38,11 @@ VALUES ('Костюм х/б', 2500, 4, 'Костюм зимний', '42-43', 'WI
        ('Костюм нательный', 1500, 8, 'Нательное белье', 'XL', 'WINTER'),
        ('Комбинезон защитный', 1300, 6, 'Защитный дождевик цвет хаки', 'XL', 'SUMMER');
 
-INSERT INTO fishing_summer (name, price, count, description)
-VALUES ('Крючки', 50, 15, 'Крючек на карпа'),
-       ('Крючки', 40, 13, 'Крючек на окуня'),
-       ('Поплавки', 60, 10, 'Поплавки перьевые'),
-       ('Грузила наборные', 80, 10, 'Грузила 10-15-20 гр.');
-
-INSERT INTO fishing_summer_type (type, fishing_summer_id)
-VALUES ('HOOKS', 100017),
-       ('HOOKS', 100018),
-       ('FLOATS', 100019),
-       ('SINKERS', 100020);
+INSERT INTO fishing_summer (name, price, count, description, fishing_summer_type)
+VALUES ('Крючки', 50, 15, 'Крючек на карпа', 'HOOKS'),
+       ('Крючки', 40, 13, 'Крючек на окуня', 'HOOKS'),
+       ('Поплавки', 60, 10, 'Поплавки перьевые', 'FLOATS'),
+       ('Грузила наборные', 80, 10, 'Грузила 10-15-20 гр.', 'SINKERS');
 
 INSERT INTO fishing_winter (name, price, count, description)
 VALUES ('Крючки зимние', 40, 8, 'Крючек зимний'),

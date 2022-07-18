@@ -1,6 +1,6 @@
 package com.aleksi.model.product.fishing;
 
-import com.aleksi.model.AbstractProductEntity;
+import com.aleksi.model.product.AbstractProductEntity;
 
 public class FishingWinter extends AbstractProductEntity {
 

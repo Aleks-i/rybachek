@@ -1,10 +1,9 @@
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS boats;
 DROP TABLE IF EXISTS clothes;
+DROP TABLE IF EXISTS fishing_summer;
 DROP TABLE IF EXISTS fishing_winter_type;
 DROP TABLE IF EXISTS fishing_winter;
-DROP TABLE IF EXISTS fishing_summer_type;
-DROP TABLE IF EXISTS fishing_summer;
 DROP TABLE IF EXISTS tourism_type;
 DROP TABLE IF EXISTS tourism;
 DROP TABLE IF EXISTS users;
@@ -43,6 +42,7 @@ CREATE TABLE boats
     pass_count  SMALLINT         NOT NULL,
     boats_brand VARCHAR          NOT NULL
 );
+CREATE INDEX boats_brand ON boats (boats_brand);
 
 CREATE TABLE clothes
 (
@@ -58,20 +58,14 @@ CREATE INDEX clothes_type_idx ON clothes (clothes_type);
 
 CREATE TABLE fishing_summer
 (
-    id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    name        TEXT             NOT NULL,
-    price       DOUBLE PRECISION NOT NULL,
-    count       SMALLINT         NOT NULL,
-    description TEXT             NOT NULL
+    id                  INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    name                TEXT             NOT NULL,
+    price               DOUBLE PRECISION NOT NULL,
+    count               SMALLINT         NOT NULL,
+    description         TEXT             NOT NULL,
+    fishing_summer_type VARCHAR          NOT NULL
 );
-
-CREATE TABLE fishing_summer_type
-(
-    type              VARCHAR NOT NULL,
-    fishing_summer_id INTEGER NOT NULL,
-    FOREIGN KEY (fishing_summer_id) REFERENCES fishing_summer (id) ON DELETE CASCADE
-);
-CREATE INDEX fishing_summer_type_idx ON fishing_summer_type (type);
+CREATE INDEX fishing_summer_type_idx ON fishing_summer (fishing_summer_type);
 
 CREATE TABLE fishing_winter
 (

@@ -1,6 +1,6 @@
 package com.aleksi.model.product.tourism;
 
-import com.aleksi.model.AbstractProductEntity;
+import com.aleksi.model.product.AbstractProductEntity;
 import com.aleksi.model.product.TypesOfProducts;
 
 public class Tourism extends AbstractProductEntity {

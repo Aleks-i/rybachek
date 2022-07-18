@@ -1,6 +1,5 @@
-package com.aleksi.testdata;
+package com.aleksi;
 
-import com.aleksi.MatcherFactory;
 import com.aleksi.model.user.Role;
 import com.aleksi.model.user.User;
 

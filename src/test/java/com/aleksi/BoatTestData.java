@@ -1,9 +1,9 @@
-package com.aleksi.testdata;
+package com.aleksi;
 
-import com.aleksi.MatcherFactory;
 import com.aleksi.model.AbstractBaseEntity;
 import com.aleksi.model.product.boat.Boat;
 import com.aleksi.model.product.boat.BoatBrand;
+import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,7 +12,8 @@ import java.util.stream.Stream;
 
 import static com.aleksi.model.AbstractBaseEntity.START_SEQ;
 
-public class BoatTestData {
+@Component
+public class BoatTestData implements TestData<Boat> {
     public static final MatcherFactory.Matcher<Boat> BOAT_MATCHER = MatcherFactory
             .usingIgnoringFieldsComparator();
 
@@ -25,9 +26,7 @@ public class BoatTestData {
     public static final int BOAT_ID_7 = START_SEQ + 9;
     public static final int BOAT_ID_8 = START_SEQ + 10;
     public static final int BOAT_ID_9 = START_SEQ + 11;
-
     public static final int NOT_FOUND = 10;
-
     public static final Boat BOAT_1 = new Boat(BOAT_ID_1, "АКВА ОПТИМА 260", 14000, 1,
             "Лодка ПВХ надувная зеленый", 260, 220, 2, BoatBrand.AKVA);
     public static final Boat BOAT_2 = new Boat(BOAT_ID_2, "АКВА МАСТЕР 280", 17700, 2,
@@ -47,12 +46,12 @@ public class BoatTestData {
     public static final Boat BOAT_9 = new Boat(BOAT_ID_9, "Румб 280", 17300, 2,
             "Надуваня лодка Румб серый/зеленый", 280, 220, 2, BoatBrand.RUMB);
 
-    public static Boat getNewBoat() {
+    public Boat getNew() {
         return new Boat(null, "New", 10000, 2, "Совсем новая лодка",
                 280, 150, 2, BoatBrand.AKVA);
     }
 
-    public static Boat getUpdatedBoat() {
+    public Boat getUpdated() {
         Boat updatedBoat = new Boat(BOAT_1);
         updatedBoat.setName("Обновленная");
         updatedBoat.setPrice(10.35);
@@ -65,9 +64,29 @@ public class BoatTestData {
         return updatedBoat;
     }
 
-    public static List<Boat> getAllBoat() {
+    @Override
+    public int getEntityIdOne() {
+        return BOAT_ID_1;
+    }
+
+    @Override
+    public Boat getEntityOne() {
+        return BOAT_1;
+    }
+
+    @Override
+    public int getEntityIdNotFound() {
+        return NOT_FOUND;
+    }
+
+    public List<Boat> getAll() {
         return Stream.of(BOAT_1, BOAT_2, BOAT_3, BOAT_4, BOAT_5, BOAT_6, BOAT_7, BOAT_8, BOAT_9)
                 .sorted(Comparator.comparing(AbstractBaseEntity::getName, String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public MatcherFactory.Matcher<Boat> getMatcher() {
+        return BOAT_MATCHER;
     }
 }

@@ -1,9 +1,9 @@
 package com.aleksi.service;
 
 import com.aleksi.AbstractServiceTest;
+import com.aleksi.UserTestData;
 import com.aleksi.model.user.Role;
 import com.aleksi.model.user.User;
-import com.aleksi.testdata.UserTestData;
 import com.aleksi.util.exception.NotFoundException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
-import static com.aleksi.testdata.UserTestData.*;
+import static com.aleksi.UserTestData.*;
 import static org.junit.Assert.assertThrows;
 
-public class UserServiceTest extends AbstractServiceTest {
+public class UserTest extends AbstractServiceTest {
 
     @Autowired
     UserService service;

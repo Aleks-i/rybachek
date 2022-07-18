@@ -1,6 +1,6 @@
 package com.aleksi.model.product.boat;
 
-import com.aleksi.model.AbstractProductEntity;
+import com.aleksi.model.product.AbstractProductEntity;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;

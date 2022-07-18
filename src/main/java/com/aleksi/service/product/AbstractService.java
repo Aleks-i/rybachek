@@ -1,7 +1,7 @@
-package com.aleksi.service;
+package com.aleksi.service.product;
 
-import com.aleksi.model.AbstractProductEntity;
-import com.aleksi.repository.ProductRepository;
+import com.aleksi.model.product.AbstractProductEntity;
+import com.aleksi.repository.product.ProductRepository;
 import org.springframework.util.Assert;
 
 import java.util.List;

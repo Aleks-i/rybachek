@@ -1,8 +1,6 @@
 package com.aleksi.repository.user;
 
-import com.aleksi.model.user.Role;
 import com.aleksi.model.user.User;
-import com.aleksi.util.exception.NotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
@@ -41,13 +39,5 @@ public class DataJpaUserRepository implements UserRepository {
     @Override
     public List<User> getAll() {
         return crudRepository.findAll(SORT_NAME_EMAIL);
-    }
-
-    protected boolean checkRoleAdminModerator(int userId) {
-        User user = crudRepository.findById(userId).orElse(null);
-        if (user == null || !user.getRoles().contains(Role.ADMIN) || !user.getRoles().contains(Role.MODERATOR)) {
-            throw new NotFoundException("User not exist or there is no privilege for the operation");
-        }
-        return true;
     }
 }

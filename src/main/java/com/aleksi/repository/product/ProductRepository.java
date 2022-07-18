@@ -1,6 +1,6 @@
-package com.aleksi.repository;
+package com.aleksi.repository.product;
 
-import com.aleksi.model.AbstractProductEntity;
+import com.aleksi.model.product.AbstractProductEntity;
 
 import java.util.List;
 

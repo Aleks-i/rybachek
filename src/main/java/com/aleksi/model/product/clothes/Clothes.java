@@ -1,6 +1,6 @@
 package com.aleksi.model.product.clothes;
 
-import com.aleksi.model.AbstractProductEntity;
+import com.aleksi.model.product.AbstractProductEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

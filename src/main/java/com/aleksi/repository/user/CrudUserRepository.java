@@ -19,7 +19,7 @@ public interface CrudUserRepository extends JpaRepository<User, Integer> {
 
     User getByEmail(String email);
 
-    default boolean checkRoleAdminOrModerator(int userId) {
+    default boolean isRoleAdminOrModerator(int userId) {
         User user = findById(userId).orElse(null);
         if (user == null) {
             return false;

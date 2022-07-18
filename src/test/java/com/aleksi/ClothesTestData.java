@@ -1,9 +1,9 @@
-package com.aleksi.testdata;
+package com.aleksi;
 
-import com.aleksi.MatcherFactory;
 import com.aleksi.model.AbstractBaseEntity;
 import com.aleksi.model.product.clothes.Clothes;
 import com.aleksi.model.product.clothes.ClothesTypes;
+import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,7 +12,8 @@ import java.util.stream.Stream;
 
 import static com.aleksi.model.AbstractBaseEntity.START_SEQ;
 
-public class ClothesTestData {
+@Component
+public class ClothesTestData implements TestData<Clothes> {
     public static final MatcherFactory.Matcher<Clothes> CLOTHES_MATCHER = MatcherFactory
             .usingIgnoringFieldsComparator();
 
@@ -35,12 +36,12 @@ public class ClothesTestData {
     public static final Clothes CLOTHES_5 = new Clothes(CLOTHES_ID_5, "Комбинезон защитный", 1300, 6,
             "Защитный дождевик цвет хаки", "XL", ClothesTypes.SUMMER);
 
-    public static Clothes getNewClothes() {
+    public Clothes getNew() {
         return new Clothes(null, "New", 10000, 2, "Совсем новая одежда",
                 "XXXXL", ClothesTypes.SUMMER);
     }
 
-    public static Clothes getUpdatedClothes() {
+    public Clothes getUpdated() {
         Clothes updatedClothes = new Clothes(CLOTHES_1);
         updatedClothes.setName("Обновленная");
         updatedClothes.setPrice(10.35);
@@ -51,9 +52,29 @@ public class ClothesTestData {
         return updatedClothes;
     }
 
-    public static List<Clothes> getAllClothes() {
+    @Override
+    public int getEntityIdOne() {
+        return CLOTHES_ID_1;
+    }
+
+    @Override
+    public Clothes getEntityOne() {
+        return CLOTHES_1;
+    }
+
+    @Override
+    public int getEntityIdNotFound() {
+        return NOT_FOUND;
+    }
+
+    public List<Clothes> getAll() {
         return Stream.of(CLOTHES_1, CLOTHES_2, CLOTHES_3, CLOTHES_4, CLOTHES_5)
                 .sorted(Comparator.comparing(AbstractBaseEntity::getName, String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public MatcherFactory.Matcher<Clothes> getMatcher() {
+        return CLOTHES_MATCHER;
     }
 }

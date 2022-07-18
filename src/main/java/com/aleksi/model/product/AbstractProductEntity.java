@@ -1,12 +1,8 @@
-package com.aleksi.model;
+package com.aleksi.model.product;
 
-import com.aleksi.model.product.TypesOfProducts;
-import org.springframework.util.CollectionUtils;
+import com.aleksi.model.AbstractBaseEntity;
 
 import javax.persistence.MappedSuperclass;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Set;
 
 @MappedSuperclass
 public abstract class AbstractProductEntity extends AbstractBaseEntity {
