@@ -3,7 +3,6 @@ DROP TABLE IF EXISTS boats;
 DROP TABLE IF EXISTS clothes;
 DROP TABLE IF EXISTS fishing_summer;
 DROP TABLE IF EXISTS fishing_winter;
-DROP TABLE IF EXISTS tourism_type;
 DROP TABLE IF EXISTS tourism;
 DROP TABLE IF EXISTS users;
 
@@ -79,17 +78,11 @@ CREATE INDEX fishing_winter_type_idx ON fishing_winter (fishing_winter_type);
 
 CREATE TABLE tourism
 (
-    id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    name        TEXT             NOT NULL,
-    price       DOUBLE PRECISION NOT NULL,
-    count       SMALLINT         NOT NULL,
-    description TEXT             NOT NULL
+    id           INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    name         TEXT             NOT NULL,
+    price        DOUBLE PRECISION NOT NULL,
+    count        SMALLINT         NOT NULL,
+    description  TEXT             NOT NULL,
+    tourism_type VARCHAR          NOT NULL
 );
-
-CREATE TABLE tourism_type
-(
-    type       VARCHAR NOT NULL,
-    tourism_id INTEGER NOT NULL,
-    FOREIGN KEY (tourism_id) REFERENCES tourism (id) ON DELETE CASCADE
-);
-CREATE INDEX tourism_type_idx ON tourism_type (type);
+CREATE INDEX tourism_type_idx ON tourism (tourism_type);

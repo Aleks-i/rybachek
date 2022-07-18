@@ -3,8 +3,16 @@ package com.aleksi.model.product.tourism;
 import com.aleksi.model.product.AbstractProductEntity;
 import com.aleksi.model.product.TypesOfProducts;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "tourism")
 public class Tourism extends AbstractProductEntity {
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tourism_type")
+    @NotNull
     private TourismType typesOfTourismPosition;
 
     public Tourism() {
