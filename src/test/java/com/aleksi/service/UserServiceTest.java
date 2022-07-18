@@ -1,6 +1,5 @@
 package com.aleksi.service;
 
-import com.aleksi.AbstractServiceTest;
 import com.aleksi.UserTestData;
 import com.aleksi.model.user.Role;
 import com.aleksi.model.user.User;
@@ -14,7 +13,7 @@ import java.util.List;
 import static com.aleksi.UserTestData.*;
 import static org.junit.Assert.assertThrows;
 
-public class UserTest extends AbstractServiceTest {
+public class UserServiceTest extends AbstractServiceTest {
 
     @Autowired
     UserService service;

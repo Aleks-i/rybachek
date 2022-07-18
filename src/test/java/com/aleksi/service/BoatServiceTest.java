@@ -1,15 +1,12 @@
 package com.aleksi.service;
 
-import com.aleksi.AbstractProductServiceTest;
 import com.aleksi.BoatTestData;
 import com.aleksi.model.product.boat.Boat;
 import com.aleksi.service.product.BoatService;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
-public class BoatTest extends AbstractProductServiceTest<Boat> {
+public class BoatServiceTest extends AbstractProductServiceTest<Boat> {
 
     @Autowired
     BoatService service;

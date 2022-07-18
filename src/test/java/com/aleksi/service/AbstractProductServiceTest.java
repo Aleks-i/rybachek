@@ -1,5 +1,7 @@
-package com.aleksi;
+package com.aleksi.service;
 
+import com.aleksi.MatcherFactory;
+import com.aleksi.TestData;
 import com.aleksi.model.product.AbstractProductEntity;
 import com.aleksi.service.product.ProductService;
 import com.aleksi.util.exception.NotFoundException;

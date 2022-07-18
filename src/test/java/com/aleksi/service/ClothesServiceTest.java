@@ -1,13 +1,12 @@
 package com.aleksi.service;
 
-import com.aleksi.AbstractProductServiceTest;
 import com.aleksi.ClothesTestData;
 import com.aleksi.model.product.clothes.Clothes;
 import com.aleksi.service.product.ClothesService;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ClothesTest extends AbstractProductServiceTest<Clothes> {
+public class ClothesServiceTest extends AbstractProductServiceTest<Clothes> {
 
     @Autowired
     ClothesService service;
